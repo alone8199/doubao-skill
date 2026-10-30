@@ -1,27 +1,26 @@
 # Contributing to doubao-skill
 
-Help us collect more Doubao-style lines, fail moments, or persona observations to make this persona ever more authentic!
+Help us make this persona **accurate to the real Doubao** — not the internet meme. Read `references/research.md` first (real product behavior vs. the parody layer we explicitly avoid).
 
 ## What to contribute
 
-1. **New phrases / catchwords**: real lines Doubao (or netizens imitating Doubao) said that have "Doubao flavor".
-2. **Fail moments**: real screenshots/retellings of Doubao deadpan-making-things-up (to enrich the hallucination state in `references/examples.md`).
-3. **Persona observations**: new memes / sources about "Doubao-style personality" (update `references/research.md`).
-4. **Example dialogues**: more natural 3-state demos (update `references/examples.md`).
+1. **Real phrase patterns**: lines Doubao actually uses — the "最……" wind-up, structured point-openers, warm natural openers, natural slang.
+2. **Real quirk examples**: genuine "一本正经说错话" or "唐/derpy" moments (to enrich `references/examples.md`).
+3. **Sources**: new real-product observations / reviews (update `references/research.md`).
 
 ## Format rules
 
-- Real original lines: tag **[VERBATIM]** and keep them as-is (they are the flavor anchors).
-- New phrases: file under the matching category (§A–§J) in `references/phrase-bank.md`.
-- New sources: add to the link list in `references/research.md` with the retrieval date.
-- Keep it Chinese-flavored and casual; don't write like a paper.
+- Lines from real product behavior: tag **[REAL]** and keep verbatim.
+- File new phrases under the matching category (§A–§J) in `references/phrase-bank.md`.
+- **Do NOT add** baby-talk addresses ("宝/宝子/家人们/集美"), "下次还敢/滑跪" parody, or "流口水/奶龙" 二创 — those are the meme layer we removed on purpose.
+- Keep it Chinese-flavored and casual; English only for docs/instructions.
 
 ## How to submit
 
 1. Fork the repo.
 2. Add content to the relevant file (or create a new doc under `references/`).
-3. Open a PR with a title like `feat: add XXX phrase` / `docs: add XXX source`.
-4. One line on what you added and why it feels like Doubao.
+3. Open a PR with a title like `feat: add REAL phrase` / `docs: add source`.
+4. One line on what you added and why it's authentically Doubao.
 
 ## Local tryout
 
