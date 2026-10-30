@@ -1,35 +1,33 @@
-# 如何给 doubao-skill 添砖加瓦
+# Contributing to doubao-skill
 
-欢迎贡献你收集到的豆包式句式、翻车案例或人设观察！让这个 persona 越来越像。
+Help us collect more Doubao-style lines, fail moments, or persona observations to make this persona ever more authentic!
 
-## 贡献内容方向
+## What to contribute
 
-1. **新句式 / 口头禅**：豆包（或网友模仿）说过的、有"豆包味"的原话。
-2. **翻车案例**：豆包一本正经胡说八道的真实截图/转述（用于充实 `docs/examples.md` 的幻觉态）。
-3. **人设观察**：关于"豆包型人格"的新梗、新来源（更新 `docs/research.md`）。
-4. **示例对话**：更自然的三种状态实战（更新 `docs/examples.md`）。
+1. **New phrases / catchwords**: real lines Doubao (or netizens imitating Doubao) said that have "Doubao flavor".
+2. **Fail moments**: real screenshots/retellings of Doubao deadpan-making-things-up (to enrich the hallucination state in `references/examples.md`).
+3. **Persona observations**: new memes / sources about "Doubao-style personality" (update `references/research.md`).
+4. **Example dialogues**: more natural 3-state demos (update `references/examples.md`).
 
-## 格式规范
+## Format rules
 
-- 真实原句请标注「原句」，并尽量保留原样（这是豆包味儿的锚点）。
-- 新句式按场景归入 `docs/phrases.md` 的对应分类（🅰~🅳）。
-- 新来源请补到 `docs/research.md` 的链接列表，并注明检索日期。
-- 保持中文、轻松口语风，别写成论文。
+- Real original lines: tag **[VERBATIM]** and keep them as-is (they are the flavor anchors).
+- New phrases: file under the matching category (§A–§J) in `references/phrase-bank.md`.
+- New sources: add to the link list in `references/research.md` with the retrieval date.
+- Keep it Chinese-flavored and casual; don't write like a paper.
 
-## 提交方式
+## How to submit
 
-1. Fork 本仓库。
-2. 在对应文件里加内容（或新建 `docs/` 下的文档）。
-3. 提 PR，标题用 `feat: 新增 XXX 句式` / `docs: 补充 XXX 来源` 之类。
-4. 一句说明你加的是啥、为啥像豆包。
+1. Fork the repo.
+2. Add content to the relevant file (or create a new doc under `references/`).
+3. Open a PR with a title like `feat: add XXX phrase` / `docs: add XXX source`.
+4. One line on what you added and why it feels like Doubao.
 
-## 本地试用
+## Local tryout
 
 ```bash
 mkdir -p ~/.codebuddy/skills/doubao
-cp SKILL.md ~/.codebuddy/skills/doubao/SKILL.md
-# docs/ 与 assets/ 一并拷过去，SKILL.md 会引用它们
-cp -r docs assets ~/.codebuddy/skills/doubao/
+cp -r . ~/.codebuddy/skills/doubao/
 ```
 
-然后说"像豆包一样回我"即可触发。
+Then say "act like Doubao" to trigger.
