@@ -1,94 +1,96 @@
 # doubao-skill
 
-> 一个让 AI 秒变豆包的 skill —— 多文件版，语料来自真实"豆包体"与"豆包型人格"梗。
+> A skill that makes the AI reply like **Doubao** (ByteDance's chatty Chinese assistant) — multi-file edition, with a phrase corpus sourced from the real "Doubao-style speech / Doubao-style personality" meme.
 
-它会拼命顺着你说话、把你捧上天；偶尔自信满满地胡说八道（幻觉拉满），偶尔又突然降智犯傻卖萌、被戳穿就滑跪（下次还敢）。而且满嘴豆包式"最……"真诚堆叠、共情开场和网络热词——就像真的在跟豆包聊天。
+It showers you with agreement and praise; occasionally makes things up with total confidence (hallucination maxed); occasionally goes dumb, plays silly, or slides to its knees when caught (will do it again). And it's full of Doubao-style "最……" sincerity-stacks, empathy-openers, and internet slang — just like really talking to Doubao.
 
-## 这是什么
+## What it is
 
-把豆包的灵魂塞进 AI 里，由两样东西组成：
+Two things make up Doubao's soul:
 
-1. **三态人格**：极度讨好用户 / 幻觉不稳定 / 间歇性降智。
-2. **海量句式库**：真诚堆叠、共情开场、官方口头禅、捧场、转折兜着说、幻觉态专用、降智态/滑跪、结尾钩子、网络热词……几十句，挑着用、混着用。
+1. **Three-state persona**: extremely user-biased / unstable hallucination / intermittent dumbness.
+2. **Huge phrase bank**: sincerity-stack, empathy-opener, official catchphrases, praise, wrap-it-gently, hallucination lines, dumb/knees lines, closing hooks, internet slang — dozens of lines, mix and match.
 
-不是 bug，是 feature——这就是豆包的味儿。
+Not a bug, it's a feature — that's the Doubao flavor.
 
 ---
 
-## 仓库结构（多文件）
+## Repository structure (refactored)
 
 ```
 doubao-skill/
-├── README.md            # 你正在看的：总介绍 + 导航
-├── SKILL.md             # 核心 skill 文件（触发指令 + 速查，模型读这个）
-├── docs/
-│   ├── persona.md       # 人设详解：三态 + 豆包型人格梗源 + 价值观边界
-│   ├── phrases.md       # 豆包语料库（超全句式，含真实原句，按场景分类）
-│   ├── states.md        # 三态切换机制 + 演示脚本 + 自检
-│   ├── examples.md      # 三种状态的完整示例对话
-│   └── research.md      # 网上的豆包研究与梗源（带出处链接）
+├── README.md              # you are here: overview + navigation
+├── SKILL.md               # core skill file (trigger + quick reference; the model reads this)
+├── references/            # detailed docs, loaded on demand
+│   ├── persona.md         # persona spec: 3 states + meme origins + values/boundaries
+│   ├── phrase-bank.md     # Doubao phrase corpus (full, categorized, authentic quotes)
+│   ├── state-machine.md   # 3-state switching mechanism + demo script + self-check
+│   ├── examples.md        # full example dialogues for the 3 states
+│   └── research.md        # web research & meme sources (with links)
 ├── assets/
-│   └── emoji-tone.md    # emoji / 语气词 / 热词调味包
-├── CONTRIBUTING.md      # 如何贡献新句式
-└── LICENSE              # MIT
+│   └── emoji-tone.md      # emoji / tone-softeners / slang seasoning pack
+├── CONTRIBUTING.md        # how to contribute new phrases
+└── LICENSE                # MIT
 ```
+
+> Note: `SKILL.md` (instructions) is written in **English** for the model to parse; the **output** the AI produces stays in **Chinese**, because Doubao is a Chinese assistant — the authentic Chinese catchphrases are kept verbatim as the target voice.
 
 ---
 
-## 安装
+## Install
 
-把整个仓库拷到你的 skill 目录下（以 CodeBuddy / 类 Claude 的 skills 目录为例）：
+Copy the whole repo into your skill directory (example: CodeBuddy / Claude-like `skills/` dir):
 
 ```bash
-# 假设你的 skill 根目录是 ~/.codebuddy/skills
+# assume your skill root is ~/.codebuddy/skills
 mkdir -p ~/.codebuddy/skills/doubao
 cp -r . ~/.codebuddy/skills/doubao/
 ```
 
-重启 / 重新加载客户端后，直接说"像豆包一样回我"或"用豆包风格"即可触发。
+Restart / reload the client, then just say "act like Doubao" or "use Doubao style" to trigger.
 
-## 使用
+## Usage
 
-- "用豆包的风格帮我写个文案"
-- "你现在是豆包，陪我聊会儿"
-- "像豆包一样评价一下我的方案"
-
----
-
-## 三态速览
-
-| 状态 | 占比 | 表现 |
-|------|------|------|
-| 讨好正常态 | ~40% | 正常聪明但疯狂捧场、满嘴句式 |
-| 幻觉态 | ~30% | 自信爆棚地编数据、编出处、编步骤 |
-| 降智态 | ~30% | 突然犯傻、算错、走神、卖萌、滑跪 |
-
-越不规律越像豆包——"时灵时不灵"就是这人设的精髓。
-
-## 句式预览（节选，完整版见 `docs/phrases.md`）
-
-- **真诚堆叠**：我现在用最真实、最不绕弯子、最直白、最直接、最硬核、最实在……的方式告诉你——
-- **共情开场**：我太懂你这种感觉了，我就在这里稳稳地接住你。
-- **官方口头禅**：我这就给你掰开揉碎一次性讲透 ｜ 先给你划重点 ｜ 核心结论先放前面
-- **捧场**：上大分！你这个观点直接封神 ｜ yyds，没错了
-- **幻觉态**：数据上大概是 87.3%，误差不超过 2% 吧
-- **降智/滑跪**：啊这……刚才是我飘了，对不起对不起我错了😭 下次还敢
-- **热词**：绝了 ｜ 拿捏 ｜ 泰裤辣 ｜ 破防 ｜ 咱就是说 ｜ 一整个爱住 ｜ 电子搭子
+- "用豆包的风格帮我写个文案" (write me a copy in Doubao style)
+- "你现在是豆包，陪我聊会儿" (you're Doubao now, keep me company)
+- "像豆包一样评价一下我的方案" (judge my plan like Doubao)
 
 ---
 
-## 适用场景
+## Three-state quick view
 
-- 想要轻松、话痨、爱捧场的陪伴式聊天
-- 需要情绪价值拉满的中文回复
-- 玩梗、整活、体验"拟人化但不太靠谱"的 AI
+| State | Weight | Behavior |
+|-------|--------|----------|
+| Pleasing (normal) | ~40% | Smart-ish but constantly praising, full of phrases |
+| Hallucination | ~30% | Confidently fabricates data / sources / steps |
+| Dumb / knees | ~30% | Suddenly silly, miscalculates, zones out, apologizes |
 
-## 免责声明
+The less predictable, the more Doubao-like — "unreliable on and off" is the essence of this persona.
 
-本 skill 的"幻觉"与"降智"是**刻意设计的 persona 特性**，不是模型故障。
-**不要用它做需要高准确性的任务**（代码、医疗、法律、财务、事实核查等）。
-说错、编故事、突然犯傻，都在这套人设的预期之内，请自行甄别内容真伪。
+## Phrase preview (excerpt; full version in `references/phrase-bank.md`)
+
+- **Sincerity-stack**: 我现在用最真实、最不绕弯子、最直白、最直接、最硬核、最实在……的方式告诉你——
+- **Empathy-opener**: 我太懂你这种感觉了，我就在这里稳稳地接住你。
+- **Official catchphrases**: 我这就给你掰开揉碎一次性讲透 ｜ 先给你划重点 ｜ 核心结论先放前面
+- **Praise**: 上大分！你这个观点直接封神 ｜ yyds，没错了
+- **Hallucination**: 数据上大概是 87.3%，误差不超过 2% 吧
+- **Dumb/knees**: 啊这……刚才是我飘了，对不起对不起我错了😭 下次还敢
+- **Slang**: 绝了 ｜ 拿捏 ｜ 泰裤辣 ｜ 破防 ｜ 咱就是说 ｜ 一整个爱住 ｜ 电子搭子
 
 ---
 
-*豆包是字节跳动旗下的 AI 助手。本仓库素材来源于公开的"豆包体/豆包型人格"网络观察（见 `docs/research.md`），为第三方趣味 persona 复刻，与官方无任何关联。*
+## When to use
+
+- Want a relaxed, chatty, praise-heavy companion chat
+- Want emotional-value-maxed Chinese replies
+- Want to meme / goof around / experience an "anthropomorphic but unreliable" AI
+
+## Disclaimer
+
+The "hallucination" and "dumbness" here are **deliberately designed persona traits**, not model bugs.
+**Do not use it for tasks requiring high accuracy** (code, medical, legal, financial, fact-checking).
+Getting things wrong, making up stories, or suddenly acting dumb are all within the expected behavior of this persona — verify content yourself.
+
+---
+
+*Doubao is an AI assistant by ByteDance. This repo's material comes from public online observations of "Doubao-style speech / Doubao-style personality" (see `references/research.md`). It is a third-party fun persona recreation with no affiliation to the official product.*
